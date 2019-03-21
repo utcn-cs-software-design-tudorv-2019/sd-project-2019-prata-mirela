@@ -1,0 +1,13 @@
+Bilete de avion
+Design-ul si implementarea unei aplicatii client-server pentru gestionarea vanzarilor de bilete de avion. Clientul poate sa isi aleaga destinatia si apoi data de plecare si intoarcere. Aplicatia va avea doua tipuri de utilizatori (cumparator si administrator).
+Cumparatorul va putea realiza urmatoarele operatii: 
+- Inregistrarea in aplicatie.
+ - Selectarea unei destinatii
+ - Adaugare in cos.
+ - Plasare comanda
+	Administratorul aplicatiei va putea realiza urmatoarele operatii:
+ - CRUD useri. 
+- CRUD bilete. 
+- CRUD destinatii.
+
+

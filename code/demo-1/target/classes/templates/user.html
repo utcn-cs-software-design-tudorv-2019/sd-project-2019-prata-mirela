@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+      <head>
+      <meta charset="UTF-8"/>
+   <script src="/webjars/jquery/3.1.1/jquery.min.js"></script>
+        <script src="/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
+        <title>Home</title>
+        <link rel="stylesheet"
+          href="/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" />
+         
+    </head>
+    <body>
+    <div th:replace="fragments/header :: header">&nbsp;</div>
+     <br/>
+	<br/>
+	<br/>
+	<br/>
+	<div class="container">
+		<br/>
+    	 <strong>Welcome </strong>  to the plane tickets app!.
+    	 <br/>
+    	 <br/>
+    	 <br/>
+    	 
+    	
+    	  <a href="#" th:href="@{/}" class="btn btn-large btn-success">Log Out</a>
+     </div>
+    </body>
+</html>

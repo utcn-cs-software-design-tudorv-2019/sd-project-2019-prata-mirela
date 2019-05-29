@@ -1,13 +1,16 @@
 package com.example.demo.persistence.entity;
 import java.sql.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 	@Entity
@@ -28,20 +31,20 @@ import javax.validation.constraints.NotNull;
 	    private String seat;
 	    
 	    @Column
-	    private String price;
+	    private Integer price;
 	    
 	    
 	    @ManyToOne
 	    @JoinColumn(name = "iddestination")
 	    @NotNull
 	    private Destination destination;
+	    
 
 	  
-	    
-	    @ManyToOne
-	    @JoinColumn(name = "idshoppingcart")
+	    @OneToMany(mappedBy = "ticket", fetch = FetchType.LAZY)
+		 private List<CartTicket> cartTickets;
 
-	    private Shoppingcart shoppingcart;
+	    
 
 
 		@Override
@@ -99,13 +102,13 @@ import javax.validation.constraints.NotNull;
 
 
 
-		public String getPrice() {
+		public Integer getPrice() {
 			return price;
 		}
 
 
 
-		public void setPrice(String price) {
+		public void setPrice(Integer price) {
 			this.price = price;
 		}
 
@@ -123,15 +126,7 @@ import javax.validation.constraints.NotNull;
 
 
 
-		public Shoppingcart getShoppingcart() {
-			return shoppingcart;
-		}
-
-
-
-		public void setShoppingcart(Shoppingcart shoppingcart) {
-			this.shoppingcart = shoppingcart;
-		}
+		
 
 	    
 	    

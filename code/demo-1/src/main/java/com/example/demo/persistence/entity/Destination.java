@@ -21,10 +21,10 @@ public class Destination {
 	private Integer iddestination;
 	
     @Column
-    private String name;
+    private String country;
     
     @Column
-    private String description;
+    private String city;
 	
     
     @OneToMany(mappedBy = "destination", fetch = FetchType.EAGER)
@@ -37,7 +37,7 @@ public class Destination {
 
 	@Override
 	public String toString() {
-		return "destination[" + iddestination + "] " + description ;
+		return "destination[" + iddestination + "] " + city ;
 	}
 
 
@@ -63,8 +63,8 @@ public class Destination {
 
 
 
-	public String getDescription() {
-		return description;
+	public String getCity() {
+		return city;
 	}
 
 
@@ -72,8 +72,8 @@ public class Destination {
 
 
 
-	public void setDescription(String description) {
-		this.description = description;
+	public void setCity(String city) {
+		this.city = city;
 	}
 
 
@@ -99,8 +99,8 @@ public class Destination {
 
 
 
-	public String getName() {
-		return name;
+	public String getCountry() {
+		return country;
 	}
 
 
@@ -108,8 +108,8 @@ public class Destination {
 
 
 
-	public void setName(String name) {
-		this.name = name;
+	public void setCountry(String country) {
+		this.country = country;
 	}
 
    

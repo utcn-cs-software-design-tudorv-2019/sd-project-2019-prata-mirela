@@ -6,12 +6,14 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
+import com.example.demo.observer.Observer;
+import com.example.demo.persistence.entity.Shoppingcart;
 import com.example.demo.persistence.entity.Shoppingcart;
 import com.example.demo.persistence.entity.User;
 import com.example.demo.persistence.repo.ShoppingcartRepository;
 
 @Service()
-public class ShoppingcartService {
+public class ShoppingcartService implements Observer {
 	
 	@Inject
 	ShoppingcartRepository shoppingcartRepository;
@@ -28,6 +30,11 @@ public class ShoppingcartService {
 	{
 		return shoppingcartRepository.findAll();
 	}
+	public Shoppingcart updateShoppingcart(Shoppingcart shoppingcart)
+	{
+		return shoppingcartRepository.save(shoppingcart);
+	}
+	
 
 	public Shoppingcart findByUser(User user)
 	{
@@ -37,6 +44,19 @@ public class ShoppingcartService {
 		// TODO Auto-generated method stub
 		return shoppingcartRepository.findByIdshoppingcart(id);
 	}
+	private int finaltotal;
+	@Override
+	public void update(int id, int total) {
+		// TODO Auto-generated method stub
+		
+		finaltotal+=total;
+	
+		Shoppingcart shoppingcart = shoppingcartRepository.findByIdshoppingcart(id);
+		shoppingcart.setTotalprice(finaltotal);
+		shoppingcartRepository.save(shoppingcart);
+	}
+	
+	
 	
 	
 }

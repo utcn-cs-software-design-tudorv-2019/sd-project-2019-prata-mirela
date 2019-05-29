@@ -18,11 +18,14 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
+          <li th:classappend="${module == 'home' ? 'active' : ''}">
+              <a href="#" th:href="@{'/user/'+${user.iduser}}">Home</a>
+            </li>
             <li th:classappend="${module == 'myprofile' ? 'active' : ''}">
               <a href="#" th:href="@{'/user/'+${user.iduser}+'/myProfile'}">MyProfile</a>
             </li>
-           <li th:classappend="${module == 'offers' ? 'active' : ''}">
-              <a href="#" th:href="@{'/user/'+${user.iduser}+'/shop'}">Destinations</a>
+           <li th:classappend="${module == 'shop' ? 'active' : ''}">
+              <a href="#" th:href="@{'/user/'+${user.iduser}+'/shop'}">Shop</a>
             </li>
             <li th:classappend="${module == 'shoppingcart' ? 'active' : ''}">
               <a href="#" th:href="@{'/shoppingcart/'+${user.iduser}}">Shopping Cart</a>

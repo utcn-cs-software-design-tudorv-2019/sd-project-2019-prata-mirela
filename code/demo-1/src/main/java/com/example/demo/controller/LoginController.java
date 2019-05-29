@@ -4,6 +4,7 @@ import org.springframework.ui.Model;
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,7 +32,7 @@ public class LoginController {
 	@Inject
 	private AdminService adminService;
 	
-	private String email;
+
 	
 	
 	@RequestMapping(value="/")
@@ -69,6 +70,24 @@ public class LoginController {
 		User user = userService.findById(iduser);
 		model.addAttribute("user",user);
 	return "userProfile";
+	}
+
+	
+
+	@RequestMapping(value="/user/{iduser}/myProfile/edit",method=RequestMethod.GET)
+	public String myProfileEdit(Model model, @PathVariable int iduser)
+	{
+		User user = userService.findById(iduser);
+		model.addAttribute("user",user);
+	return "update_userprofile";
+	}
+	
+	@PostMapping("/user/{iduser}/myProfile/update")
+	public String updateProfile(@PathVariable("iduser") int id,User user,Model model) {
+		user.setIduser(id);
+		userService.updateUser(user);
+		model.addAttribute("users", userService.findAllUsers());
+		return "redirect:/user/{iduser}/myProfile";
 	}
 	
 	@RequestMapping(value="/user/{iduser}")

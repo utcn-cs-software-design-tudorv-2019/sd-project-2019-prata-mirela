@@ -41,7 +41,7 @@ public class TicketController {
     }
 	  @PostMapping("/create")
 	public String create(Ticket ticket,Model model) {
-		ticket.setShoppingcart(null);
+		
 		ticketService.addTicket(ticket);
 		model.addAttribute("tickets", ticketService.findAllTickets());
 		model.addAttribute("destinations",destinationService.findAllDestinations());

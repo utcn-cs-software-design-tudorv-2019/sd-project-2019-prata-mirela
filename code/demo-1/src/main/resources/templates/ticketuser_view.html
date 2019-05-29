@@ -16,7 +16,7 @@
 	<br/>
 	<br/>
 <div class="container">
-		<button class="btn btn-success nBtn"><a href="/tickets/addTicket">New</a></button>
+		
 		<div class="card">
 			<div class="card-block">
 				<table class="table table-hover">
@@ -27,6 +27,7 @@
 							<th>Seat</th>
 							<th>Price</th>
 							<th>Destination</th>
+							
 						</tr>
 					</thead>
 					<tbody>
@@ -38,10 +39,11 @@
 							<td><span th:text="${ticket.arrivaldata}"> Arrival Data </span></td>
 							<td><span th:text="${ticket.seat}"> Seat </span></td>
 							<td><span th:text="${ticket.price}"> Price </span></td>
-							<td data-th-text="${ticket.destination.name}">Destination</td>
+							<td data-th-text="${ticket.destination.country}">Country</td>
+						
 
 							<td><a href="#"
-								th:href="@{addShoppingcart/{idticket}(idticket=${ticket.idticket})} "
+								th:href="@{addTicketCart/{idticket}(idticket=${ticket.idticket})} "
 								class="btn btn-danger delBtn">Add to shopping cart</a></td>
 							
 						

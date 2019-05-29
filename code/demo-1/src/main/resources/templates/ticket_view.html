@@ -10,6 +10,11 @@
 	href="/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" />
 </head>
 <body>
+ <div th:replace="fragments/header2 :: header">&nbsp;</div>
+     <br/>
+	<br/>
+	<br/>
+	<br/>
 <div class="container">
 		<button class="btn btn-success nBtn"><a href="/tickets/addTicket">New</a></button>
 		<div class="card">
@@ -21,7 +26,8 @@
 							<th>Arrival Data</th>
 							<th>Seat</th>
 							<th>Price</th>
-							<th>Destination</th>
+							<th>Country</th>
+							
 						</tr>
 					</thead>
 					<tbody>
@@ -33,8 +39,8 @@
 							<td><span th:text="${ticket.arrivaldata}"> Arrival Data </span></td>
 							<td><span th:text="${ticket.seat}"> Seat </span></td>
 							<td><span th:text="${ticket.price}"> Price </span></td>
-							<td data-th-text="${ticket.destination.name}">Destination</td>
-
+							<td data-th-text="${ticket.destination.country}"> Destination</td>
+						
 							<td><a
 								th:href="@{/tickets/delete/{idticket}(idticket=${ticket.idticket})} "
 								class="btn btn-danger delBtn">Delete</a></td>

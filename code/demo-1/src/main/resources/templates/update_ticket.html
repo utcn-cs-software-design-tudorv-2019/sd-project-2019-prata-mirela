@@ -41,7 +41,7 @@
 								<label for="destination" class="col-form-label">Destination</label>
     <select class="form-control" th:field="${ticket.destination}"  id="destination">
     <option value="0">select operator</option>
-    <option th:each="destination : ${destinations}" th:value="${destination.iddestination}" th:text="${destination.name}"></option>
+    <option th:each="destination : ${destinations}" th:value="${destination.iddestination}" th:text="${destination.country}"></option>
     </select>
 </div>
 

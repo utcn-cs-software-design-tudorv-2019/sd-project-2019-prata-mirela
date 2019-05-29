@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<script src="/webjars/jquery/3.1.1/jquery.min.js"></script>
+<script src="/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
+<title>Weather</title>
+<link rel="stylesheet"
+	href="/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" />
+</head>
+<body>
+ <div th:replace="fragments/header :: header">&nbsp;</div>
+     <br/>
+	<br/>
+	<br/>
+	<br/>
+<div class="container">
+		
+	
+<div class="card">
+			<div class="card-block">
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th>Counry</th>
+							<th>City</th>
+							<th>Icon</th>
+							<th>Temp <sup>°F</sup> </th>
+							<th>Temp <sup>°C</sup> </th>
+						
+						</tr>
+					</thead>
+					<tbody>
+						
+						<tr >
+						
+							<td><span th:text="${ws.country}"> Country</span></td>
+							<td><span th:text="${ws.city}"> City </span></td>
+							
+							<td><img th:src="@{'http://openweathermap.org/img/w/'+${ws.icon}+'.png'}"/></td>
+							<td><span th:text="${ws.getFahrenheitTemperature()}"> Temp <sup>°F</sup> </span></td>
+							<td><span th:text="${ws.getCelsiusTemperature()}"> Temp<sup>°C</sup> </span></td>
+							
+							
+						
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<p align="center">
+		<button class="btn btn-info nBtn"><a th:href="'/user/'+ ${user.iduser} +'/shop'">Back</a></button>
+		</p>
+		
+		<div class="card">
+			<div class="card-block">
+				<table class="table table-hover">
+					
+					<tbody>
+						
+						<td th:each="w : ${wss}">
+						<img th:src="@{'http://openweathermap.org/img/w/'+${w.icon}+'.png'}"/>
+							<br/>
+							<b>Temp <sup>°F</sup> </b>
+							<br/>
+							<span th:text="${w.getFahrenheitTemperature()}"> Temp <sup>°F</sup> </span>
+							<br/>
+							<b>
+							Temp <sup>°C</sup> 
+							</b>
+							<br/>
+						<span th:text="${w.getCelsiusTemperature()}"> Temp<sup>°C</sup> </span>
+						<br/>
+						<b>
+							Data
+							</b>
+							<br/>
+						<span th:text="${w.getData()}"> Data </span>
+							
+							
+							</td>
+						
+					</tbody>
+				</table>
+			</div>
+		</div>
+		
+		
+		
+		</div>
+
+</body>
+</html>

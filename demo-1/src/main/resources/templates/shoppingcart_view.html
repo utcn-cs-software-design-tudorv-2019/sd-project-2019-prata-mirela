@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<script src="/webjars/jquery/3.1.1/jquery.min.js"></script>
+<script src="/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
+<title>Tickets</title>
+<link rel="stylesheet"
+	href="/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" />
+</head>
+<body>
+ <div th:replace="fragments/header :: header">&nbsp;</div>
+     <br/>
+	<br/>
+	<br/>
+	<br/>
+<div class="container">
+		
+		<div class="card">
+			<div class="card-block">
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th>Departure Date</th>
+							<th>Arrival Data</th>
+							<th>Seat</th>
+							<th>Price</th>
+							<th>Destination</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:if="${tickets.empty}">
+							<td colspan="2">No Items in the shoppingcart</td>
+						</tr>
+						<tr th:each="ticket : ${tickets}">
+							<td><span th:text="${ticket.departuredata}"> Departure Data </span></td>
+							<td><span th:text="${ticket.arrivaldata}"> Arrival Data </span></td>
+							<td><span th:text="${ticket.seat}"> Seat </span></td>
+							<td><span th:text="${ticket.price}"> Price </span></td>
+							<td data-th-text="${ticket.destination.country}">Destination</td>
+
+							<td  th:each="cartticket : ${carttickets}" th:if="(${cartticket.ticket.idticket} == ${ticket.idticket})">    <a th:href=" ${user.iduser} +'/'+${shoppingcart.idshoppingcart} + '/remove/'+ ${cartticket.idcarttickets}"
+								class="btn btn-danger delBtn">Delete</a></td>
+							
+						
+						</tr>
+						
+					</tbody>
+				</table>
+			</div>
+			
+		</div>
+		</div>
+		<p align="center">
+		Total price:
+		<br/>
+		<span th:text="${shoppingcart.totalprice}">Total</span>
+		<br/>
+		<button class="btn btn-info nBtn"><a th:href=" ${user.iduser} +'/'+${shoppingcart.idshoppingcart} + '/buy'">Buy</a></button>
+		</p>
+
+</body>
+</html>
